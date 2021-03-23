@@ -22,7 +22,7 @@ function AccordeonBody() {
     </ul>
 }
 
-export function Accordeon2(props: AccordeonPropsType) {
+/*export function Accordeon2(props: AccordeonPropsType) {
     if (props.collapsed === true) {
         return (
             <div>
@@ -32,7 +32,8 @@ export function Accordeon2(props: AccordeonPropsType) {
     } else {
         return <AccordeonTitle title={props.title}/>
     }
-}
+    
+}*/
 
 export function Accordeon(props: AccordeonPropsType) {
     return <div>

@@ -1,43 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 type AccordeonPropsType = {
     title: string
-    collapsed: boolean
+    collapsed?: boolean
 }
 
 type AccordeonTitlePropsType = {
     title: string
+    onClick: () => void
+
 }
 
 function AccordeonTitle(props: AccordeonTitlePropsType) {
-    return <h3>{props.title}</h3>
+    return <h3 onClick={() => (props.onClick())}>{props.title}</h3>
 }
 
 function AccordeonBody() {
     return <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        <li>PURRI</li>
+        <li>DAMIAH</li>
+        <li>SHUGMASTA</li>
     </ul>
 }
 
-export function Accordeon2(props: AccordeonPropsType) {
-    if (props.collapsed === true) {
-        return (
-            <div>
-                <AccordeonTitle title={props.title}/>
-                <AccordeonBody/>
-            </div>)
-    } else {
-        return <AccordeonTitle title={props.title}/>
-    }
-}
 
-export function Accordeon(props: AccordeonPropsType) {
+export function UnControlledAccordeon(props: AccordeonPropsType) {
+
+    let [col, setCol] = useState(false)
+
     return <div>
+        <AccordeonTitle title={props.title}  onClick={() => (setCol(!col))}/>
 
-    <AccordeonTitle title={props.title}/>
-        {!props.collapsed && <AccordeonBody/>}
+        {!col && <AccordeonBody/>}
     </div>
-    }
+}
