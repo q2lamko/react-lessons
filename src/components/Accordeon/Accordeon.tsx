@@ -3,15 +3,17 @@ import React from "react";
 
 type AccordeonPropsType = {
     title: string
-    onClick: (collapsed: boolean) => void
+    onClick: () => void
     collapsed: boolean
 }
 
+/*
 type AccordeonTitlePropsType = {
     title: string
     onClick: (collapsed: boolean) => void
     collapsed: boolean
 }
+*/
 
 /*export function Accordeon2(props: AccordeonPropsType) {
     if (props.collapsed === true) {
@@ -29,13 +31,13 @@ type AccordeonTitlePropsType = {
 export function Accordeon(props: AccordeonPropsType) {
     return <div>
 
-    <AccordeonTitle title={props.title} collapsed={props.collapsed} onClick={props.onClick}/>
+    <AccordeonTitle {...props}/>
         {!props.collapsed && <AccordeonBody/>}
     </div>
     }
 
-function AccordeonTitle(props: AccordeonTitlePropsType) {
-    return <h3 onClick={() => (props.onClick(!props.collapsed))}>{props.title}</h3>
+function AccordeonTitle(props: AccordeonPropsType) {
+    return <h3 onClick={props.onClick}>{props.title}</h3>
 }
 
 function AccordeonBody() {

@@ -6,23 +6,29 @@ import {OnOff} from "./components/OnOf/OnOff";
 import {UnControlledAccordeon} from './components/SelfControlledAccordeon/UnControlledAccordeon';
 import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
 import {OnOffControlled} from "./components/OnOfСControlled/OnOffControlled";
+import {Increset,ValueType} from "./components/increset/increset";
 
 function App() {
-
-    let [ratingValue, setRatingValue] = useState<RatingValueType>(3)
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(5)
     let [collapsed, setCollapsed] = useState<boolean>(true)
     let [on, setOn] = useState<boolean>(false)
+    const onChange = () => {
+        setCollapsed(!collapsed)
+    }
+    let [value, setValue] = useState<ValueType>(0)
+
+    let [disabled, setDisabled] = useState<boolean>(false)
 
     return (
         <div>
-             <Accordeon title={"Menu1"} onClick={setCollapsed} collapsed={collapsed}/>
-            {/*/!* <Accordeon title={"Menu2"} collapsed={false}/>*!/*/}
-            {/* <UnControlledAccordeon title={"юзверя"}/>*/}
-            {/* <Rating value={ratingValue} onClick={setRatingValue}/>*/}
-            {/*<OnOff />*/}
-            <OnOff />
+            <Increset value={value} onClick={setValue} disabled={disabled}/>
+           {/* <Accordeon title={"Menu1"} onClick={onChange} collapsed={collapsed}/>*/}
+            {/*<Accordeon title={"Menu2"} collapsed={false}/>*/}
+        {/*    <UnControlledAccordeon title={"юзверя"}/>*/}
+            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <OnOff/>
             <OnOffControlled on={on} onClick={setOn}/>
-            {/*<UncontrolledRating />*/}
+            <UncontrolledRating />
         </div>
     );
 }
