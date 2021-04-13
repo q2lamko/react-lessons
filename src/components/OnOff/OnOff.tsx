@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
 
-type OnOffType = {
+export type OnOffType = {
     on: boolean
     onClick: (on: boolean) => void
 }
 
 
-export function OnOffControlled(props: OnOffType) {
+export function OnOff(props: OnOffType) {
 
     const OnStyle = {width: "50px", backgroundColor: props.on ? "green" : "white", padding: '5px'}
     const OffStyle = {backgroundColor: props.on ? "white" : "red", width: "50px", padding: '5px'}

@@ -1,34 +1,41 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Accordeon} from "./components/Accordeon/Accordeon";
+/*import {Accordeon} from "./components/Accordeon/Accordeon";
 import {Rating, RatingValueType} from "./components/Rating/Rating";
-import {OnOff} from "./components/OnOf/OnOff";
-import {UnControlledAccordeon} from './components/SelfControlledAccordeon/UnControlledAccordeon';
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+
 import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
-import {OnOffControlled} from "./components/OnOfСControlled/OnOffControlled";
-import {Increset,ValueType} from "./components/increset/increset";
+import {OnOff} from "./components/OnOff/OnOff";
+import {Increset,ValueType} from "./components/Counter/increset/increset";*/
+import { Counter } from './components/Counter/Counter';
+import {UnControlledAccordeon} from './components/UnControlledAccordeon/UnControlledAccordeon';
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import {OnOff} from "./components/OnOff/OnOff";
+import {Accordeon} from "./components/Accordeon/Accordeon";
 
 function App() {
-    let [ratingValue, setRatingValue] = useState<RatingValueType>(5)
+    /*let [ratingValue, setRatingValue] = useState<RatingValueType>(5)
     let [collapsed, setCollapsed] = useState<boolean>(true)
-    let [on, setOn] = useState<boolean>(false)
+
     const onChange = () => {
         setCollapsed(!collapsed)
     }
-    let [value, setValue] = useState<ValueType>(0)
-
-    let [disabled, setDisabled] = useState<boolean>(false)
+*/
+    let [on, setOn] = useState<boolean>(false)
 
     return (
         <div>
-            <Increset value={value} onClick={setValue} disabled={disabled}/>
+            <Counter/>
            {/* <Accordeon title={"Menu1"} onClick={onChange} collapsed={collapsed}/>*/}
             {/*<Accordeon title={"Menu2"} collapsed={false}/>*/}
-        {/*    <UnControlledAccordeon title={"юзверя"}/>*/}
+        {/*
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <OnOff/>
-            <OnOffControlled on={on} onClick={setOn}/>
-            <UncontrolledRating />
+
+            <OnOff on={on} onClick={setOn}/>
+            <UncontrolledRating />*/}
+            <UnControlledAccordeon title={"юзверя"}/>
+            <OnOff on={on} onClick={setOn}/>
+
         </div>
     );
 }
