@@ -1,30 +1,44 @@
 import React from "react";
 
-
-export type AccordeonPropsType = {
+type ItemType = {
     title: string
-    onClick: () => void
-    collapsed: boolean
+    value: any
 }
 
 
+export type AccordeonPropsType = {
+    title: string
+    onChange: () => void
+    collapsed: boolean
+    items: Array<ItemType>
+    onClick: (value: any) => void
+}
+
+type AccordeonTitlePropsType = {
+    title: string
+    onChange: () => void
+
+}
 
 export function Accordeon(props: AccordeonPropsType) {
     return <div>
 
     <AccordeonTitle {...props}/>
-        {!props.collapsed && <AccordeonBody/>}
+        {!props.collapsed && <AccordeonBody items={props.items} onClick={props.onClick}/>}
     </div>
     }
 
-function AccordeonTitle(props: AccordeonPropsType) {
-    return <h3 onClick={(e) => props.onClick()}>{props.title}</h3>
+function AccordeonTitle(props: AccordeonTitlePropsType) {
+    return <h3 onClick={(e) => props.onChange()}>{props.title}</h3>
 }
 
-function AccordeonBody() {
+type AccordeonBodyPropsType = {
+    items: ItemType[]
+    onClick: (value: any) => void
+}
+function AccordeonBody(props: AccordeonBodyPropsType) {
     return <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+
+        {props.items.map((e, index) =><li onClick={() => {props.onClick(e.value)}} key={index}>{e.title}</li> )}
     </ul>
 }

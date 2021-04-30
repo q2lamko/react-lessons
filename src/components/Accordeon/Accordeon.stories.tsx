@@ -11,10 +11,11 @@ export default {
     component: Accordeon,
 }
 const callback  = action('Accordion mode is on fire ')
+const onClickCallback  = action('some item was clicked')
 
-export const UsersCollapsedMode = () => <Accordeon onClick={callback} title={'Users'} collapsed={true}/>
-export const MenuUnCollapsedMode = () => <Accordeon onClick={callback} title={'Menu'} collapsed={false}/>
+export const UsersCollapsedMode = () => <Accordeon onChange={callback} title={'Users'} collapsed={true} items={[]} onClick={onClickCallback}/>
+export const MenuUnCollapsedMode = () => <Accordeon onChange={callback} title={'Menu'} collapsed={false} items={[{title:"Dimych",value:1},{title:"Olga", value: 2},{title: "Ignat", value: 3}]} onClick={onClickCallback}/>
 export const ModeChanging = () =>{
     const [value, setValue] = useState<boolean>(true)
-    return <Accordeon  collapsed={value} onClick={() => setValue(!value)} title={"Menu"}/>
+    return <Accordeon  collapsed={value} onChange={() => setValue(!value)} title={"Menu"} items={[{title:"Dimych",value:1},{title:"Olga", value: 2},{title: "Ignat", value: 3}]} onClick={onClickCallback}/>
 }

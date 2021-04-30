@@ -30,7 +30,7 @@ export function UnControlledAccordeon(props: AccordeonPropsType) {
     let [col, setCol] = useState(false)
 
     return <div>
-        <AccordeonTitle title={props.title}  onClick={() => (setCol(!col))}/>
+        <AccordeonTitle title={props.title.trim()}  onClick={() => (setCol(!col))}/>
 
         {!col && <AccordeonBody/>}
     </div>

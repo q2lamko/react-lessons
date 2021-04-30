@@ -1,38 +1,54 @@
-import React from 'react';
+import React, {ChangeEvent, useRef, useState} from 'react';
+import {action} from "@storybook/addon-actions";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Button, ButtonProps } from './Button';
 
 export default {
-  title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as Meta;
+    title: 'Example/Input',
+    /* component: 'input',*/
+}
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+export const UncontrolledInput = () => <input/>
+export const TrackedValueOfUncontrolledInput = () => {
+    const [value, setvalue] = useState('')
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const ActualValue = e.currentTarget.value;
+        setvalue(ActualValue)
+    }
+    return <> <input onChange={onChange}/> - {value} </>;
+}
+export const GetTrackedValueOfUncontrolledInputByButtonPress = () => {
+    const [value, setvalue] = useState('')
+    const InputRef = useRef<HTMLInputElement>(null);
+    const save = () => {
+        const el = InputRef.current as HTMLInputElement;
+        setvalue(el.value)
+    }
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+    return <> <input ref={InputRef}/>
+        <button onClick={save}>save</button>
+        actual value - {value} </>;
+}
+export const ControlledInputWithFixedValuee = () => <input value={'it-incubator'}/>
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
+export const ControlledInput = () => {
+    const [parentValue, setParentvalue] = useState('')
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {setParentvalue(e.currentTarget.value)}
+    return <input value={parentValue} onChange={onChange}/>
+}
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
+export const ControlledCheckbox = () => {
+    const [parentValue, setParentvalue] = useState(true)
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {setParentvalue(e.currentTarget.checked)}
+    return <input type="checkbox" checked={parentValue} onChange={onChange}/>
+}
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+export const ControlledSelect = () => {
+    const [parentValue, setParentvalue] = useState<string|undefined>('2')
+    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {setParentvalue(e.currentTarget.value)}
+    return <select value={parentValue} onChange={onChange}>
+        <option value={'1'}>none</option>
+        <option value={'2'}>Minsk</option>
+        <option value={'3'}>Novosibirsk</option>
+    </select>
+}
