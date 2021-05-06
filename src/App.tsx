@@ -27,7 +27,12 @@ function App() {
     return (
         <div>
             <Counter/>
-           <Accordeon title={"Menu1"} onChange={onChange} collapsed={collapsed} items={[]}/>
+           <Accordeon
+               onClick={()=>{}}
+               title={"Menu1"}
+               onChange={onChange}
+               collapsed={collapsed}
+               items={[]}/>
             {/*<Accordeon title={"Menu2"} collapsed={false}/>*/}
             {/*
             <Rating value={ratingValue} onClick={setRatingValue}/>
