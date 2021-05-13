@@ -9,11 +9,13 @@ export default {
     component: Select,
 }
 
-export const BaseExampleWithValue = () =>
-    <>
+export const BaseExampleWithValue = () => {
+    const [value, setValue] = useState('2');
+
+    return <>
         <Select
-            onChange={action("value changed")}
-            value={"2"}
+            onChange={setValue}
+            value={value}
             items={[
                 {title: "Minsk", value: "1"},
                 {title: "Vologda", value: "2"},
@@ -22,12 +24,15 @@ export const BaseExampleWithValue = () =>
             ]}/>
 
     </>
+}
 
-export const BaseExampleWithoutValue = () =>
-    <>
+export const BaseExampleWithoutValue = () => {
+    const [value, setValue] = useState(null);
+
+    return <>
         <Select
-            onChange={action("value changed")}
-
+            value={value}
+            onChange={setValue}
             items={[
                 {title: "Minsk", value: "1"},
                 {title: "Vologda", value: "2"},
@@ -36,3 +41,4 @@ export const BaseExampleWithoutValue = () =>
             ]}/>
 
     </>
+}
