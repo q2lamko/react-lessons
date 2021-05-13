@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useReducer, useState} from "react";
 
 
 type AccordeonPropsType = {
@@ -24,14 +24,42 @@ function AccordeonBody() {
     </ul>
 }
 
+type ActionType = {
+    type: string
+}
+
+export type StateType = {
+    collapsed: boolean
+}
+
+export const TOGGLE_COLLAPSED = "TOGGLE-COLLAPSED"
+
+export const reducer = (state: StateType, action: ActionType):StateType => {
+
+    switch (action.type) {
+
+        case TOGGLE_COLLAPSED:
+
+            return{
+                ...state,
+                collapsed: !state.collapsed
+            }
+        default:
+             throw new Error("BAD FUCKIN CODE DUDE");
+    }
+    return state;
+}
 
 export function UnControlledAccordeon(props: AccordeonPropsType) {
 
-    let [col, setCol] = useState(false)
+
+    // let [collapsed, setCollapsed] = useState(false)
+    let [state, dispatch] = useReducer(reducer, {collapsed: false})
 
     return <div>
-        <AccordeonTitle title={props.title.trim()}  onClick={() => (setCol(!col))}/>
+        {/*<AccordeonTitle title={props.title.trim()}  onClick={() => (setCollapsed(!collapsed))}/>*/}
+        <AccordeonTitle title={props.title.trim()} onClick={() => (dispatch({type: TOGGLE_COLLAPSED}))}/>
 
-        {!col && <AccordeonBody/>}
+        {!state.collapsed && <AccordeonBody/>}
     </div>
 }
