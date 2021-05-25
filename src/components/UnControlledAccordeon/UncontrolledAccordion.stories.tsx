@@ -5,10 +5,11 @@ import {action} from "@storybook/addon-actions";
 
 import {UnControlledAccordeon} from "./UnControlledAccordeon";
 
+const AccMemo = React.memo(UnControlledAccordeon)
 
 export default {
     title: 'UnControlledAccordion',
     component: UnControlledAccordeon,
 }
 
-export const UnAcc = () => <UnControlledAccordeon title={'Gamers'} collapsed={true} />
+export const UnAcc = () => <AccMemo title={'Gamers'} collapsed={true} />

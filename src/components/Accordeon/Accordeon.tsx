@@ -4,8 +4,6 @@ type ItemType = {
     title: string
     value: any
 }
-
-
 export type AccordeonPropsType = {
     title: string
     onChange: () => void
@@ -13,18 +11,20 @@ export type AccordeonPropsType = {
     items: Array<ItemType>
     onClick: (value: any) => void
 }
-
 type AccordeonTitlePropsType = {
     title: string
     onChange: () => void
 
 }
 
+
+const MemoAccordeon = React.memo(AccordeonBody)
+
 export function Accordeon(props: AccordeonPropsType) {
     return <div>
 
     <AccordeonTitle {...props}/>
-        {!props.collapsed && <AccordeonBody items={props.items} onClick={props.onClick}/>}
+        {!props.collapsed && <MemoAccordeon items={props.items} onClick={props.onClick}/>}
     </div>
     }
 

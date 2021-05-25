@@ -9,7 +9,10 @@ export default {
     title: 'UncontrolledOnOff stories',
     component: UncontrolledOnOff,
 }
+
+const UnOnOffMemo = React.memo(UncontrolledOnOff)
+
 const callback = action('clicked')
-export const OnMode = () => <UncontrolledOnOff onChange={callback} defaultOn={true}/>
-export const OffMode = () => <UncontrolledOnOff onChange={callback} defaultOn={false}/>
-export const EmptyRating = () => <UncontrolledOnOff onChange={callback} defaultOn={true}/>
+export const OnMode = () => <UnOnOffMemo onChange={callback} defaultOn={true}/>
+export const OffMode = () => <UnOnOffMemo onChange={callback} defaultOn={false}/>
+export const EmptyRating = () => <UnOnOffMemo onChange={callback} defaultOn={true}/>

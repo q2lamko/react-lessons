@@ -10,10 +10,13 @@ export default {
     title: 'OnOff stories',
     component: OnOff,
 }
+
+const  OnOffMemo = React.memo(OnOff)
+
 const callback  = action('On or Off clicked')
 export const OnMode = () => <OnOff on={true} onClick={callback}/>
 export const OffMode = () => <OnOff on={false} onClick={callback}/>
 export const ModeChanging = () =>{
     const [value, setValue] = useState<boolean>(true)
-    return <OnOff on={value} onClick={setValue}/>
+    return <OnOffMemo on={value} onClick={setValue}/>
 }

@@ -9,11 +9,14 @@ export default {
     component: Select,
 }
 
+const SelectMemo = React.memo(Select)
+
+
 export const BaseExampleWithValue = () => {
     const [value, setValue] = useState('2');
 
     return <>
-        <Select
+        <SelectMemo
             onChange={setValue}
             value={value}
             items={[
@@ -30,7 +33,7 @@ export const BaseExampleWithoutValue = () => {
     const [value, setValue] = useState(null);
 
     return <>
-        <Select
+        <SelectMemo
             value={value}
             onChange={setValue}
             items={[
