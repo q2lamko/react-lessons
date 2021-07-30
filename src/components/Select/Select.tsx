@@ -4,6 +4,8 @@ import styles from './Select.module.css'
 type ItemType = {
     title: string
     value: any
+    id?:string
+    country?:string
 }
 
 export type SelectPropsType = {
@@ -27,7 +29,9 @@ export function Select(props: SelectPropsType) {
     const selectedItem = props.items.find(i => i.value === props.value)
     const hoveredItem = props.items.find(i => i.value === hoveredElementValue)
 
-    useEffect(() => {setHoveredElementValue(props.value)}, [props.value])
+    useEffect(() => {
+        setHoveredElementValue(props.value)
+    }, [props.value])
 
     const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -41,18 +45,19 @@ export function Select(props: SelectPropsType) {
                         return;
                     }
                 }
-            } if (!selectedItem) {
-            props.onChange(props.items[0].value) }
+            }
+            if (!selectedItem) {
+                props.onChange(props.items[0].value)
+            }
         }
 
-        if (e.key === "Enter" || e.key === "Escape" ) {
+        if (e.key === "Enter" || e.key === "Escape") {
             setActive(false)
         }
     }
 
     return (
         <>
-
             <div
                 className={styles.select}
                 onKeyUp={onKeyUp}
