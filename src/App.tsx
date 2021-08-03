@@ -12,7 +12,7 @@ import {UnControlledAccordeon} from './components/UnControlledAccordeon/UnContro
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {OnOff} from "./components/OnOff/OnOff";
 import {Accordeon, AccordeonPropsType} from "./components/Accordeon/Accordeon";
-import { Verstka } from './components/html/html';
+import {Verstka} from './components/html/html';
 
 function App() {
     // let [ratingValue, setRatingValue] = useState<RatingValueType>(5)
@@ -27,21 +27,15 @@ function App() {
     return (
         <div>
             <Counter/>
-           <Accordeon
-               onClick={()=>{}}
-               title={"Menu1"}
-               onChange={onChange}
-               collapsed={collapsed}
-               items={[]}/>
+
             {/*<Accordeon title={"Menu2"} collapsed={false}/>*/}
             {/*
             <Rating value={ratingValue} onClick={setRatingValue}/>
-
             <OnOff on={on} onClick={setOn}/>
             <UncontrolledRating />*/}
             <UnControlledAccordeon title={"юзверя"}/>
             <OnOff on={on} onClick={setOn}/>
-            <Verstka/>
+
         </div>
     );
 }
