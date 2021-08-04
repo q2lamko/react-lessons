@@ -12,6 +12,7 @@ export const Counter = () => {
 
 
 
+
     return (
         <>
 
@@ -30,6 +31,7 @@ export const Counter = () => {
                 setValue={setValue}
                 disabled={disabled}
                 maxValue={maxValue}
+                startValue={startValue}
 
             />
         </>

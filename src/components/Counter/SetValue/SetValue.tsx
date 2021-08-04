@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 
 export type ValueType = number
 export type SetValuePropsType = {
@@ -35,7 +35,7 @@ export function SetValue(props: SetValuePropsType) {
         marginTop: "5px",
         marginLeft: "5px",
         marginRight: "5px",
-        color: props.value == 5 ? "green" : "black",
+        color: props.value === 5 ? "green" : "black",
     }
     const InputStyle = {
         width: '50px',
@@ -85,6 +85,7 @@ export function SetValue(props: SetValuePropsType) {
                 type='number'
                 onChange={onChangeMaxValueHandler}
             /></div>
+
             <div>Start Value: <input
                 value={props.startValue}
                 style={InputStyle}
