@@ -6,15 +6,36 @@ export type IncResetPropsType = {
     setValue: (value: ValueType) => void
     disabled: boolean
     maxValue?: ValueType
+    startValue?: ValueType
 }
 
 export function Increset(props: IncResetPropsType) {
 
-    const onClickHandler = () => {
+    const incHandler = () => {
         if (props.maxValue) {
             return props.value < props.maxValue ? props.setValue(props.value + 1) : ""
         }
     }
+
+    let resetHandler = () => {
+        console.log('reset clicked')
+        console.log(props.startValue )
+        if (props.startValue || props.startValue === 0) {
+            props.setValue(props.startValue)
+        }
+    }
+
+    let incDisable = () => {
+        if (props.maxValue) {
+            return props.value >= props.maxValue
+        }
+    }
+    let resetDisable = () => {
+        if (props.startValue) {
+            return props.value <= props.startValue
+        }
+    }
+
     const IncStyle = {
         fontColor: "white",
         borderRadius: "6px",
@@ -41,7 +62,7 @@ export function Increset(props: IncResetPropsType) {
         marginTop: "5px",
         marginLeft: "5px",
         marginRight: "5px",
-        color: props.value == 5 ? "green" : "black",
+        color: props.value === 5 ? "green" : "black",
     }
     const MainContainerStyle = {
         backgroundColor: "brown",
@@ -70,14 +91,17 @@ export function Increset(props: IncResetPropsType) {
             <div>{props.value}</div>
         </div>
         <div style={ButtonContainerStyle}>
-            <button disabled={
-                props.value >= 5}
-                    style={IncStyle}
-                    onClick={onClickHandler}>INC
+
+            <button
+                disabled={incDisable()}
+                style={IncStyle}
+                onClick={incHandler}>INC
             </button>
-            <button disabled={props.value <= 0} style={ResetStyle} onClick={() => {
-                props.setValue(0)
-            }}>RESET
+
+            <button
+                disabled={resetDisable()}
+                style={ResetStyle}
+                onClick={resetHandler}>RESET
             </button>
         </div>
     </div>
